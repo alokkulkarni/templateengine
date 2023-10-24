@@ -41,13 +41,14 @@ public class TemplateEngineConfiguration implements ApplicationContextAware {
 
     @Bean
     public WebMvcConfigurer configurer() {
-        return new WebMvcConfigurer() {
+        WebMvcConfigurer webMvcConfigurer = new WebMvcConfigurer() {
             @Override
             public void addResourceHandlers(ResourceHandlerRegistry registry) {
                 WebMvcConfigurer.super.addResourceHandlers(registry);
                 registry.addResourceHandler("/").addResourceLocations(templatesDirectory);
             }
         };
+        return webMvcConfigurer;
     }
 
     @Bean
