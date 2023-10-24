@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: pdf-generation-engine
+  datasource:
+    url: jdbc:h2:mem:template-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  freemarker:
+    checkTemplateLocation: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  web:
+    resources:
+      static-locations: "file:///${user.home}/Documents/Development/Templates/"
+  thymeleaf:
+    cache: off
+    enable-spring-el-compiler: true
+    encoding: utf-8
+    prefix: "file:///${user.home}/Documents/Development/Templates/"
+    suffix: {.html,.xhtml}
+    check-template-location: true
+  h2:
+    console:
+      enabled: true
+server:
+  port: 9002
+
